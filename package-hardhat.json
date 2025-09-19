@@ -1,0 +1,17 @@
+{
+  "name": "neon-vault-wager-contracts",
+  "version": "1.0.0",
+  "description": "Smart contracts for Neon Vault Wager",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "deploy": "hardhat run scripts/deploy.js --network sepolia",
+    "test": "hardhat test"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@fhevm/solidity": "^0.1.0",
+    "hardhat": "^2.22.0",
+    "dotenv": "^16.0.0"
+  }
+}
