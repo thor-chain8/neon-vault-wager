@@ -5,8 +5,10 @@ import Footer from "@/components/Footer";
 import MatchCard from "@/components/MatchCard";
 import BettingModal from "@/components/BettingModal";
 import FHEModal from "@/components/FHEModal";
-import { Lock, Zap, Shield, TrendingUp } from "lucide-react";
+import { EncryptedBetting } from "@/components/EncryptedBetting";
+import { Lock, Zap, Shield, TrendingUp, Coins } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const Index = () => {
   const [bettingModalOpen, setBettingModalOpen] = useState(false);
@@ -80,7 +82,7 @@ const Index = () => {
 
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <Button variant="neon" size="lg" className="flex items-center gap-2" onClick={handleStartBetting}>
-              <Lock className="w-5 h-5" />
+              <Zap className="w-5 h-5" />
               Start Encrypted Betting
             </Button>
             <Button variant="cyber" size="lg" className="flex items-center gap-2" onClick={() => setFheModalOpen(true)}>
@@ -136,6 +138,23 @@ const Index = () => {
             <Button variant="holo" size="lg">
               View All Matches
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Encrypted Betting Section */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            <span className="bg-gradient-neon bg-clip-text text-transparent">
+              FHE Encrypted Betting
+            </span>
+          </h2>
+          
+          <div className="max-w-4xl mx-auto">
+            <EncryptedBetting vaultId={1} onSuccess={() => {
+              toast.success('Encrypted bet created successfully!');
+            }} />
           </div>
         </div>
       </section>

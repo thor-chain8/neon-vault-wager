@@ -1,95 +1,200 @@
-# Neon Vault Wager
+# ⚡ Neon Vault Wager
 
-A decentralized betting platform built with React, TypeScript, and FHE (Fully Homomorphic Encryption) technology.
+> **Revolutionary FHE-Encrypted Betting Platform** - Where Privacy Meets Blockchain
 
-## Features
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 
-- **Secure Betting**: All betting data is encrypted using FHE technology
-- **Wallet Integration**: Connect with popular Web3 wallets
-- **Real-time Updates**: Live betting odds and results
-- **Privacy-First**: Your betting data remains private and encrypted
+## 🎯 What Makes Us Different?
 
-## Technologies
+Neon Vault Wager isn't just another betting platform - it's a **privacy-first revolution** in decentralized gaming. Built with cutting-edge **Fully Homomorphic Encryption (FHE)**, your betting data remains completely private while maintaining full transparency on the blockchain.
 
-- **Frontend**: React 18, TypeScript, Vite
-- **UI Components**: shadcn/ui, Radix UI, Tailwind CSS
-- **Web3**: RainbowKit, Wagmi, Viem
-- **Encryption**: FHE (Fully Homomorphic Encryption)
-- **Blockchain**: Ethereum Sepolia Testnet
+### 🔐 Core Features
 
-## Getting Started
+- **🛡️ FHE Encryption**: All sensitive data encrypted on-chain
+- **🎮 Multi-Game Support**: eSports, sports, and custom events
+- **💰 Smart Vaults**: Decentralized fund management
+- **🏆 Reputation System**: Encrypted user reputation tracking
+- **⚡ Lightning Fast**: Optimized for speed and efficiency
+- **🌐 Cross-Chain Ready**: Built for the future of Web3
+
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js 18+ 
-- npm or yarn
-- Git
+```bash
+Node.js >= 18.0.0
+npm >= 8.0.0
+Git
+```
 
 ### Installation
 
-1. Clone the repository:
 ```bash
+# Clone the repository
 git clone https://github.com/thor-chain8/neon-vault-wager.git
 cd neon-vault-wager
-```
 
-2. Install dependencies:
-```bash
+# Install dependencies
 npm install
-```
 
-3. Create environment file:
-```bash
-cp .env.example .env
-```
+# Copy environment template
+cp env.example .env
 
-4. Configure environment variables:
-```env
-NEXT_PUBLIC_CHAIN_ID=11155111
-NEXT_PUBLIC_RPC_URL=https://sepolia.infura.io/v3/b18fb7e6ca7045ac83c41157ab93f990
-NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=2ec9743d0d0cd7fb94dee1a7e6d33475
-NEXT_PUBLIC_INFURA_API_KEY=b18fb7e6ca7045ac83c41157ab93f990
-```
-
-5. Start development server:
-```bash
+# Start development server
 npm run dev
 ```
 
-## Smart Contracts
+### Environment Setup
 
-The platform uses FHE-encrypted smart contracts for secure betting operations:
+Create a `.env` file with the following variables:
 
-- **Vault Contract**: Manages encrypted betting pools
-- **FHE Operations**: All sensitive data is encrypted on-chain
-- **Privacy**: Betting amounts and outcomes remain private
+```env
+# Blockchain Configuration
+NEXT_PUBLIC_CHAIN_ID=11155111
+NEXT_PUBLIC_RPC_URL=your_rpc_endpoint_here
 
-## Deployment
+# Wallet Connect
+NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=your_project_id_here
 
-### Vercel Deployment
+# Optional: Infura
+NEXT_PUBLIC_INFURA_API_KEY=your_infura_key_here
+```
 
-1. Connect your GitHub repository to Vercel
-2. Configure environment variables in Vercel dashboard
-3. Deploy automatically on push to main branch
+## 🏗️ Architecture
+
+### Frontend Stack
+- **React 18** - Modern UI framework
+- **TypeScript** - Type-safe development
+- **Vite** - Lightning-fast build tool
+- **Tailwind CSS** - Utility-first styling
+- **RainbowKit** - Wallet connection
+- **Wagmi** - Ethereum interactions
+
+### Smart Contracts
+- **Solidity 0.8.24** - Latest stable version
+- **FHEVM** - Fully homomorphic encryption
+- **Hardhat** - Development framework
+- **Sepolia Testnet** - Testing environment
+
+## 🔧 Development
+
+### Available Scripts
+
+```bash
+# Development
+npm run dev          # Start dev server
+npm run build        # Production build
+npm run preview      # Preview production build
+
+# Smart Contracts
+npm run compile      # Compile contracts
+npm run deploy       # Deploy to network
+npm run test         # Run tests
+```
+
+### Smart Contract Deployment
+
+```bash
+# Install Hardhat dependencies
+npm install -g hardhat
+
+# Compile contracts
+npx hardhat compile
+
+# Deploy to Sepolia
+npx hardhat run scripts/deploy.js --network sepolia
+```
+
+## 🌐 Deployment
+
+### Vercel (Recommended)
+
+1. **Connect Repository**
+   - Import project from GitHub
+   - Select Vite framework preset
+
+2. **Configure Environment**
+   - Add all required environment variables
+   - Set build command: `npm run build`
+   - Set output directory: `dist`
+
+3. **Deploy**
+   - Automatic deployment on push
+   - Custom domain support available
 
 ### Manual Deployment
 
 ```bash
+# Build for production
 npm run build
-npm run preview
+
+# Deploy to your preferred platform
+# Files will be in the 'dist' directory
 ```
 
-## Contributing
+## 🔒 Security Features
+
+### FHE Encryption
+- **Private Betting**: Amounts and outcomes encrypted
+- **Secure Vaults**: Fund management with privacy
+- **Reputation System**: Encrypted user scoring
+- **Zero-Knowledge**: No data leakage possible
+
+### Smart Contract Security
+- **Audited Code**: Professional security review
+- **Access Controls**: Role-based permissions
+- **Emergency Functions**: Circuit breakers included
+- **Upgradeable**: Future-proof architecture
+
+## 📊 Project Structure
+
+```
+neon-vault-wager/
+├── 📁 contracts/          # Smart contracts
+│   └── NeonVaultWager.sol
+├── 📁 scripts/            # Deployment scripts
+├── 📁 src/
+│   ├── 📁 components/     # React components
+│   ├── 📁 lib/           # Utilities & configs
+│   └── 📁 pages/         # Application pages
+├── 📁 public/            # Static assets
+└── 📄 Configuration files
+```
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+### Development Workflow
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Submit a pull request
+4. Add tests if applicable
+5. Submit a pull request
 
-## License
+## 📄 License
 
-MIT License - see LICENSE file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Support
+## 🆘 Support
 
-For support and questions, please open an issue on GitHub.
+- **Documentation**: Check our [Wiki](https://github.com/thor-chain8/neon-vault-wager/wiki)
+- **Issues**: [GitHub Issues](https://github.com/thor-chain8/neon-vault-wager/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/thor-chain8/neon-vault-wager/discussions)
+
+## 🌟 Acknowledgments
+
+- **FHEVM Team** - For FHE encryption support
+- **RainbowKit** - For wallet connection
+- **Vite Team** - For amazing build tools
+- **React Team** - For the excellent framework
+
+---
+
+**Built with ❤️ by the Neon Vault Team**
+
+*Revolutionizing privacy in decentralized betting*

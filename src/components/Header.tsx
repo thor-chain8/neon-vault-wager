@@ -1,5 +1,5 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { Shield } from "lucide-react";
+import { Zap, Lock } from "lucide-react";
 import encryptedLogo from "@/assets/encrypted-controller-logo.png";
 
 const Header = () => {
@@ -17,7 +17,8 @@ const Header = () => {
               Neon Vault Wager
             </h1>
             <p className="text-xs text-muted-foreground flex items-center gap-1">
-              <Shield className="w-3 h-3" />
+              <Zap className="w-3 h-3 text-blue-400" />
+              <Lock className="w-3 h-3 text-green-400" />
               FHE Encrypted Betting
             </p>
           </div>
