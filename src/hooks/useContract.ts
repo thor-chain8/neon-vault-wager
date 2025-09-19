@@ -1,5 +1,4 @@
-import { useContract, useContractWrite, useContractRead } from 'wagmi';
-import { useAccount } from 'wagmi';
+import { useWriteContract, useReadContract, useAccount } from 'wagmi';
 
 // Contract ABI - This would be generated from your compiled contract
 const CONTRACT_ABI = [
@@ -74,92 +73,113 @@ const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || '0x00000000
 
 export const useNeonVaultContract = () => {
   const { address } = useAccount();
-  
-  const contract = useContract({
-    address: CONTRACT_ADDRESS,
-    abi: CONTRACT_ABI,
-  });
 
   return {
-    contract,
     address,
     isConnected: !!address,
+    contractAddress: CONTRACT_ADDRESS,
+    abi: CONTRACT_ABI,
   };
 };
 
 export const useCreateVault = () => {
-  const { write, isLoading, error } = useContractWrite({
-    address: CONTRACT_ADDRESS,
-    abi: CONTRACT_ABI,
-    functionName: 'createVault',
-  });
+  const { writeContract, isPending, error } = useWriteContract();
+
+  const createVault = async (description: string) => {
+    return writeContract({
+      address: CONTRACT_ADDRESS,
+      abi: CONTRACT_ABI,
+      functionName: 'createVault',
+      args: [description],
+    });
+  };
 
   return {
-    createVault: write,
-    isLoading,
+    createVault,
+    isLoading: isPending,
     error,
   };
 };
 
 export const useCreateWager = () => {
-  const { write, isLoading, error } = useContractWrite({
-    address: CONTRACT_ADDRESS,
-    abi: CONTRACT_ABI,
-    functionName: 'createWager',
-  });
+  const { writeContract, isPending, error } = useWriteContract();
+
+  const createWager = async (args: any[]) => {
+    return writeContract({
+      address: CONTRACT_ADDRESS,
+      abi: CONTRACT_ABI,
+      functionName: 'createWager',
+      args,
+    });
+  };
 
   return {
-    createWager: write,
-    isLoading,
+    createWager,
+    isLoading: isPending,
     error,
   };
 };
 
 export const useDepositFunds = () => {
-  const { write, isLoading, error } = useContractWrite({
-    address: CONTRACT_ADDRESS,
-    abi: CONTRACT_ABI,
-    functionName: 'depositFunds',
-  });
+  const { writeContract, isPending, error } = useWriteContract();
+
+  const depositFunds = async (args: any[]) => {
+    return writeContract({
+      address: CONTRACT_ADDRESS,
+      abi: CONTRACT_ABI,
+      functionName: 'depositFunds',
+      args,
+    });
+  };
 
   return {
-    depositFunds: write,
-    isLoading,
+    depositFunds,
+    isLoading: isPending,
     error,
   };
 };
 
 export const useWithdrawFunds = () => {
-  const { write, isLoading, error } = useContractWrite({
-    address: CONTRACT_ADDRESS,
-    abi: CONTRACT_ABI,
-    functionName: 'withdrawFunds',
-  });
+  const { writeContract, isPending, error } = useWriteContract();
+
+  const withdrawFunds = async (args: any[]) => {
+    return writeContract({
+      address: CONTRACT_ADDRESS,
+      abi: CONTRACT_ABI,
+      functionName: 'withdrawFunds',
+      args,
+    });
+  };
 
   return {
-    withdrawFunds: write,
-    isLoading,
+    withdrawFunds,
+    isLoading: isPending,
     error,
   };
 };
 
 export const useSettleWager = () => {
-  const { write, isLoading, error } = useContractWrite({
-    address: CONTRACT_ADDRESS,
-    abi: CONTRACT_ABI,
-    functionName: 'settleWager',
-  });
+  const { writeContract, isPending, error } = useWriteContract();
+
+  const settleWager = async (args: any[]) => {
+    return writeContract({
+      address: CONTRACT_ADDRESS,
+      abi: CONTRACT_ABI,
+      functionName: 'settleWager',
+      args,
+    });
+  };
 
   return {
-    settleWager: write,
-    isLoading,
+    settleWager,
+    isLoading: isPending,
     error,
   };
 };
 
 // Read functions
 export const useWagerInfo = (wagerId: number) => {
-  const { data, isLoading, error } = useContractRead({
+  const { data, isLoading, error } = useReadContract({
     address: CONTRACT_ADDRESS,
     abi: CONTRACT_ABI,
     functionName: 'getWagerInfo',
@@ -174,7 +194,7 @@ export const useWagerInfo = (wagerId: number) => {
 };
 
 export const useVaultInfo = (vaultId: number) => {
-  const { data, isLoading, error } = useContractRead({
+  const { data, isLoading, error } = useReadContract({
     address: CONTRACT_ADDRESS,
     abi: CONTRACT_ABI,
     functionName: 'getVaultInfo',
@@ -189,7 +209,7 @@ export const useVaultInfo = (vaultId: number) => {
 };
 
 export const useUserBalance = (userAddress: string) => {
-  const { data, isLoading, error } = useContractRead({
+  const { data, isLoading, error } = useReadContract({
     address: CONTRACT_ADDRESS,
     abi: CONTRACT_ABI,
     functionName: 'getUserBalance',
