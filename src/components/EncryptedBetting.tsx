@@ -20,7 +20,7 @@ export const EncryptedBetting: React.FC<EncryptedBettingProps> = ({ vaultId, onS
   const [description, setDescription] = useState('');
   const [deadline, setDeadline] = useState('');
   const [isEncrypting, setIsEncrypting] = useState(false);
-  const [isDepositing, setIsDepositing] = useState(false);
+  const [isDepositingState, setIsDepositingState] = useState(false);
 
   const { createWager, isLoading: isCreatingWager } = useCreateWager();
   const { depositFunds, isLoading: isDepositing } = useDepositFunds();
@@ -71,7 +71,7 @@ export const EncryptedBetting: React.FC<EncryptedBettingProps> = ({ vaultId, onS
       return;
     }
 
-    setIsDepositing(true);
+    setIsDepositingState(true);
     
     try {
       // Encrypt deposit amount
@@ -87,7 +87,7 @@ export const EncryptedBetting: React.FC<EncryptedBettingProps> = ({ vaultId, onS
       console.error('Error depositing funds:', error);
       toast.error('Failed to deposit funds');
     } finally {
-      setIsDepositing(false);
+      setIsDepositingState(false);
     }
   };
 
@@ -123,10 +123,10 @@ export const EncryptedBetting: React.FC<EncryptedBettingProps> = ({ vaultId, onS
             />
             <Button 
               onClick={handleDepositFunds}
-              disabled={isDepositing}
+              disabled={isDepositing || isDepositingState}
               className="bg-green-600 hover:bg-green-700"
             >
-              {isDepositing ? 'Encrypting...' : 'Deposit'}
+              {isDepositing || isDepositingState ? 'Encrypting...' : 'Deposit'}
             </Button>
           </div>
         </div>
